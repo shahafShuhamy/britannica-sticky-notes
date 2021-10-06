@@ -1,0 +1,21 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="entire" [style.opacity]="loadingOpacity">
+<form class="app-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <mat-form-field appearance="fill">
+            <mat-label for="username">User Name</mat-label>
+            <input matInput id="username" type="text" formControlName="userName">        
+        </mat-form-field>
+        <br>
+        <mat-form-field  appearance="fill">
+            <mat-label for="password">Password</mat-label>
+            <input matInput id="password" type="password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <div class="form-group buttons">
+            <button mat-raised-button type="submit" [disabled]="!userForm.valid">Login</button>
+            <button mat-raised-button [disabled]="true">register</button>
+        </div>
+    </div>
+</form>
+</div>

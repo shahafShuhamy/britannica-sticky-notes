@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Hi, you can update / delete your note </h1>
+<div mat-dialog-content>
+    <form [formGroup]="editNoteForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Auther Name:</mat-label>
+            <input matInput placeholder="Name" formControlName="authorName">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Date:</mat-label>
+            <input type="date" matInput placeholder="Date" formControlName="date">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Content:</mat-label>
+            <textarea matInput formControlName="content"></textarea>
+          </mat-form-field>
+    </form>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onUpdateClick()" [disabled]="!editNoteForm.valid" cdkFocusInitial>Update</button>
+        <button mat-button (click)="onDeleteClick()">Delete Note</button>
+      </div>
+  </div>

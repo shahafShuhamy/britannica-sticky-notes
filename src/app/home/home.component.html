@@ -1,0 +1,11 @@
+<div class="notes-container">
+    <div class="notes-board">
+        <h1 class="headline">Notes Board</h1>
+        <div class="sticky-notes">
+            <div class="circle" (click)="onPlusClick()"></div>
+                <div *ngFor="let note of notes">
+                    <app-note (click)="clickOnNote(note)" [data]="note"></app-note>
+                </div>
+        </div>
+    </div>
+</div>
