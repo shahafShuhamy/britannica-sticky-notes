@@ -12,7 +12,6 @@ export class StickNoteDialogComponent implements OnInit {
   localData: Note;
   stickyNoteForm = this.fb.group({
     authorName: ['', Validators.required],
-    date: ['', Validators.required],
     content: ['', Validators.required]
   })
 
@@ -32,6 +31,6 @@ export class StickNoteDialogComponent implements OnInit {
 
   submit() {
     let formControls = this.stickyNoteForm.controls;
-    this.dialogRef.close({authorName: formControls.authorName.value, date: formControls.date.value, content: formControls.content.value})
+    this.dialogRef.close({authorName: formControls.authorName.value,date: new Date(), content: formControls.content.value})
   }
 }

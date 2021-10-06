@@ -47,7 +47,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {  // in case of clicking outside the dialog to close it
         if (result.event === NoteEvent.UPDATE) {
-          this.notes[result.note] = result.note;
+          this.notes = this.notes.filter((note) => note.index !== result.note.index);
+          this.notes.push(new NoteClass(result.note.authorName, result.note.date, result.note.content, this.indexCounter++));
           this.notes = this.sortNotesByDate(this.notes);
         }
         if(result.event === NoteEvent.DELETE) {
@@ -60,6 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   sortNotesByDate(notes: Note[]) {
+    // doesnt matter what type of date this will be - this will work
     return notes.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   }
 

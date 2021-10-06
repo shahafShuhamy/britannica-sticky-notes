@@ -12,7 +12,6 @@ export class NoteEditDialogComponent implements OnInit {
   localData: Note;
   editNoteForm = this.fb.group({
     authorName: ['', Validators.required],
-    date: ['', Validators.required],
     content: ['', Validators.required]
   })
   
@@ -25,7 +24,6 @@ export class NoteEditDialogComponent implements OnInit {
   ngOnInit(): void {
     this.editNoteForm.patchValue({
       authorName: this.localData.authorName,
-      date: this.localData.date,
       content: this.localData.content
     })
   }
@@ -37,8 +35,9 @@ export class NoteEditDialogComponent implements OnInit {
   onUpdateClick(){
     this.dialogRef.close({
       note:{ authorName: this.controls.authorName.value,
-        date: this.controls.date.value,
-        content: this.controls.content.value},
+             date: new Date(),
+             content: this.controls.content.value,
+             index: this.localData.index},
       event: NoteEvent.UPDATE
     })
   }
